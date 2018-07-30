@@ -1,0 +1,43 @@
+<% include ../partials/header %>
+<div class="container mt-3">
+  <div class="row">
+
+
+    <div class="col-3">
+      <p class="lead">CampCamp</p>
+      <div class="list-group">
+        <li class="list-group-item active">Info 1</li>
+        <li class="list-group-item">Info 2</li>
+        <li class="list-group-item">Info 3</li>
+      </div>
+      (map)
+    </div>
+
+    <div class="col-9">
+      <div class="jumbotron jumbotron-fluid p0">
+        <div class="container">
+          <img class="img-fluid rounded" src="<%= campground.image %>">
+          <hr>
+          <div class="container">
+            <h6 class="float-right">$$price/night</h6>
+            <h4><a href="/"><%= campground.name %></a></h4>
+            <h6 class="text-justify"> <%= campground.description %></h6>
+          </div>
+        </div>
+      </div>
+      <div class="alert alert-info">
+        <p class="float-right">
+          <a href="/campgrounds/<%= campground._id %>/comments/new" class="btn btn-primary">add comment</a>
+        </p>
+        <div class="clearfix">
+          <% campground.comments.forEach(function(comment){ %>
+          <h6 class="text-justify small"> <%= comment.text %></h6>
+          <h6 class="strong small">-<%= comment.author %></h6>
+          <% }); %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include ../partials/footer %>
